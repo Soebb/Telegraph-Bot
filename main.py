@@ -8,6 +8,7 @@ import traceback
 import asyncio
 import datetime
 import aiofiles
+import webpage2telegraph
 from random import choice 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -185,7 +186,6 @@ async def export_webpage_to_telegraph(bot, update):
     input_url = update.text
     if TELEGRAPH_TOKEN:
         try:
-            import webpage2telegraph
             webpage2telegraph.token = TELEGRAPH_TOKEN
             telegraph_url = webpage2telegraph.transfer(input_url)
             if telegraph_url:
